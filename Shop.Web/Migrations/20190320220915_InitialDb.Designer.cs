@@ -10,7 +10,7 @@ using Shop.Web.Data;
 namespace Shop.Web.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20190218175834_InitialDb")]
+    [Migration("20190320220915_InitialDb")]
     partial class InitialDb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -31,11 +31,13 @@ namespace Shop.Web.Migrations
 
                     b.Property<bool>("IsAvailabe");
 
-                    b.Property<DateTime>("LastPurchase");
+                    b.Property<DateTime?>("LastPurchase");
 
-                    b.Property<DateTime>("LastSale");
+                    b.Property<DateTime?>("LastSale");
 
-                    b.Property<string>("Name");
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(50);
 
                     b.Property<decimal>("Price");
 
